@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hoop Flick</title>
+  <meta name="description" content="Flick shots at the hoop. High scores stay in this browser.">
+  <meta name="theme-color" content="#1a120c">
+  <link rel="icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <p class="brand">Hoop Flick</p>
+      <div class="hud" id="hud" hidden>
+        <p><span>Score</span><strong id="score">0</strong></p>
+        <p><span>Streak</span><strong id="streak">0</strong></p>
+        <p><span>Time</span><strong id="time">60</strong></p>
+        <p><span>Best</span><strong id="best">0</strong></p>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="quit" hidden>Quit</button>
+        <button type="button" id="mute" aria-pressed="false">Sound on</button>
+      </div>
+    </header>
+
+    <div class="stage-wrap">
+      <div class="stage covered" id="stage">
+        <canvas id="court" width="600" height="680">Flick the ball toward the hoop.</canvas>
+        <section class="panel" id="menu" aria-labelledby="title">
+          <p class="eyebrow">Sixty seconds. One hoop.</p>
+          <h1 id="title">Hoop<br>Flick</h1>
+          <p class="lede">Drag the ball and let go. The flick is the shot. Clean swishes and make streaks score more.</p>
+          <button type="button" class="primary" id="play">Play</button>
+          <h2>High scores</h2>
+          <ol id="menu-scores" class="scores" data-limit="3"></ol>
+          <button type="button" class="tiny" id="clear-scores" hidden>Clear scores</button>
+        </section>
+        <section class="panel" id="result" hidden aria-labelledby="result-heading">
+          <h2 id="result-heading">Round over</h2>
+          <p class="final-score" id="result-score">0</p>
+          <p class="detail" id="result-detail"></p>
+          <form id="save-form" hidden>
+            <label for="initials">Initials</label>
+            <input id="initials" name="initials" maxlength="3" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+            <p id="save-error" class="error" hidden></p>
+            <button type="submit" class="primary">Save score</button>
+          </form>
+          <p id="save-note" class="note" hidden></p>
+          <div class="result-actions">
+            <button type="button" class="primary" id="again">Play again</button>
+            <button type="button" class="ghost" id="menu-back">Menu</button>
+          </div>
+          <h2>High scores</h2>
+          <ol id="result-scores" class="scores" data-limit="5"></ol>
+        </section>
+      </div>
+    </div>
+    <p class="hint" id="hint">Drag the ball toward the hoop, then release.</p>
+    <p class="sr-only" id="live" aria-live="polite"></p>
+  </div>
+  <noscript>Hoop Flick needs JavaScript to play.</noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
